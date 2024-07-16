@@ -16,6 +16,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import CampaignCard from "./CampaignCard";
 
 type Props = {
   initialData: CampaignData[];
@@ -60,10 +61,10 @@ const CampaignList = ({ initialData }: Props) => {
 
   const allCampaigns = data?.pages[currentPage - 1] ?? [];
 
-
   const handleCreateNewCampaign = () => {
     setOpen(
       <CustomModal title="Create Campaign" subheading="Enter details!">
+        <div></div>
         {/* todo: add campaign form */}
       </CustomModal>
     );
@@ -82,7 +83,6 @@ const CampaignList = ({ initialData }: Props) => {
     }
   };
 
-
   // prev pages will already in cache only change current page
   const handlePrevPage = async () => {
     if (currentPage > 1) {
@@ -99,9 +99,18 @@ const CampaignList = ({ initialData }: Props) => {
 
         <section className="flex flex-col justify-center w-full md:flex md:flex-row md:flex-wrap items-center md:justify-center md:pl-8 md:pr-8 absolute top-32 left-0 ">
           {allCampaigns.map(
-            ({ name, type, isLive, schedules, startDate, endDate, id }) =>
-              // todo: add campaign card component
-              null
+            ({ name, type, isLive, schedules, startDate, endDate, id }) => (
+              <CampaignCard
+                name={name}
+                type={type}
+                isLive={isLive!}
+                key={id}
+                schedules={schedules}
+                startDate={startDate}
+                endDate={endDate}
+                id={id}
+              />
+            )
           )}
 
           <Pagination className="mb-4 mt-4">
