@@ -7,6 +7,7 @@ import { desc, eq, count } from "drizzle-orm";
 import { TCampaign } from "@/lib/types";
 import { paginationValidator } from "@/lib/global";
 
+
 const createCampaignValidator = zValidator("json", createCampaignDTO);
 
 export const createCampaign = new Hono().post(
@@ -32,10 +33,9 @@ export const getAllCampaigns = new Hono().get(
   "/",
   paginationValidator,
   async (ctx) => {
-    // const ratelimit = ctx.get("ratelimit");
-    // const {success} = await ratelimit.limit("api");
+    const ratelimit = ctx.get("ratelimit");
+    const {success} = await ratelimit.limit("api");
 
-    const success = true;
     if (success) {
       const { page, count: c } = ctx.req.valid("query");
       const skip = (+page - 1) * +c;

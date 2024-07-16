@@ -1,5 +1,13 @@
 import { zValidator } from "@hono/zod-validator";
+import { Ratelimit } from "@upstash/ratelimit";
 import { z } from "zod";
+
+
+declare module "hono" {
+  interface ContextVariableMap {
+    ratelimit: Ratelimit;
+  }
+}
 
 export const paginationDTO = z.object({
   page: z.coerce.number({ message: "page is required" }),
