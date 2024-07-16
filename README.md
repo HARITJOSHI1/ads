@@ -1,9 +1,11 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Campaign Management Web Application
+
+## Introduction
+This project is a web application designed to help restaurant chains manage their marketing campaigns and promotion offers on food delivery platforms. The application allows users to schedule campaigns to run at specific times of the day and on selected weekdays. The key features include creating, editing, and displaying campaigns with detailed schedules.
 
 ## Getting Started
 
 First, run the development server:
-
 ```bash
 npm run dev
 # or
@@ -16,21 +18,46 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
+- **Display Campaigns**: View a list of campaigns with details such as campaign type, start date, end date, and next scheduled activation.
+- **Create Campaign**: Add new campaigns with specific types, start and end dates, and custom schedules.
+- **Edit Campaign**: Modify existing campaigns with the same fields available during creation.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Routes
 
-## Learn More
+### Campaign Management
+- **`/create-campaign`**: This route is used to create a new campaign. It accepts details such as campaign type, start date, end date, and campaign schedule.
+- **`/update-campaign`**: This route allows for editing an existing campaign. It accepts the same fields as the create campaign route.
+- **`/campaigns`**: This route retrieves a list of all campaigns, including their type, start date, end date, and the next activation schedule.
 
-To learn more about Next.js, take a look at the following resources:
+### Schedule Management
+- **`/create-schedule`**: This route is used to create a new campaign schedule. It allows for selecting multiple weekdays and start & end time combinations.
+- **`/update-schedule`**: This route enables the updating of an existing campaign schedule with new weekdays and time combinations.
+- **`/all-schedules`**: This route fetches all the campaign schedules available in the system.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Front-End**
+  - Next.js 14(AppRouter), React with TypeScript
+  - Tailwind CSS for styling
+  - Shadcn for using components
+  - Framer motion for animation
+  - React Hook Form to manage form states and fields
+  - Tanstack Query for caching queries and data fetching
 
-## Deploy on Vercel
+- **Back-End**
+  - Node.js with Hono framework for routing and handling API requests
+  - Upstash Ratelimit to protect serverless function from DDos
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Database**
+  - PostsgreSQL for storing campaign and schedule data
+  - Drizzle ORM to communicate to DB
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Styling**
+  - Tailwind CSS for modern and responsive design
+
+## Setup Instructions
+1. Clone the repository: 
+   ```sh
+   git clone <repository-url>
+
