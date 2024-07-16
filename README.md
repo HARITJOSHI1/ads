@@ -1,7 +1,7 @@
 # Campaign Management Web Application
 
 ## Introduction
-This project is a web application designed to help restaurant chains manage their marketing campaigns and promotion offers on food delivery platforms. The application allows users to schedule campaigns to run at specific times of the day and on selected weekdays. The key features include creating, editing, and displaying campaigns with detailed schedules.
+This project is a web application designed to help restaurant chains manage their marketing campaigns on food delivery platforms. The application allows users to schedule campaigns to run at specific times of the day and on selected weekdays. The key features include creating, editing, and displaying campaigns with detailed schedules.
 
 ## Getting Started
 
