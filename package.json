@@ -8,9 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "db:gen": "bun drizzle-kit generate",
-    "db:push": "bun run ./lib/db/migrate.ts",
-    "db:seed": "bun run ./lib/db/seed.ts",
-    "db:del-mig": "rm -rf ./lib/db/migrations"
+    "db:push": "bun run ./lib/db/migrate.ts"
   },
   "dependencies": {
     "@hono/zod-validator": "^0.2.2",
