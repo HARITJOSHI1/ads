@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/pagination";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import CampaignCard from "./CampaignCard";
+import { CampaignForm } from "@/components/forms/campaign-form";
 
 type Props = {
   initialData: CampaignData[];
@@ -32,8 +33,6 @@ const CampaignList = ({ initialData }: Props) => {
   >({
     queryKey: ["campaigns", 1],
     queryFn: async ({ pageParam = 1 }) => {
-      console.log("Page to fetch", pageParam);
-
       const response = await fetch(`/api/campaigns?page=${pageParam}&count=10`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -64,13 +63,10 @@ const CampaignList = ({ initialData }: Props) => {
   const handleCreateNewCampaign = () => {
     setOpen(
       <CustomModal title="Create Campaign" subheading="Enter details!">
-        <div></div>
-        {/* todo: add campaign form */}
+        <CampaignForm />
       </CustomModal>
     );
   };
-
-  console.log("Current page", currentPage);
 
   const handleNextPage = async () => {
     if (currentPage < (data?.pages.length ?? 0)) {

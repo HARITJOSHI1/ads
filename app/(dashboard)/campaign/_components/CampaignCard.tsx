@@ -19,6 +19,7 @@ import { useModal } from "@/provider/modal-provider";
 import CustomModal from "@/components/modal";
 import { useQuery } from "@tanstack/react-query";
 import { getCampaignScheduleDetails } from "@/lib/global/functions";
+import { CampaignForm } from "@/components/forms/campaign-form";
 
 type Props = {
   name: string;
@@ -74,8 +75,17 @@ const CampaignCard = ({
         title="Update Campaign details"
         subheading="Customize however you like!"
       >
-        <div></div>
-        {/* todo: campign form */}
+        <CampaignForm
+          campaign={{
+            id,
+            name,
+            //@ts-ignore
+            type,
+            startDate,
+            endDate,
+            campSchedules: !error ? data?.data?.campaign : undefined,
+          }}
+        />
       </CustomModal>
     );
   };
